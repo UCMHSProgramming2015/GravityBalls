@@ -11,6 +11,7 @@ void setup() {
   diam = 80;
   velX = random(-5, 5);
   velY = random(-5, 5);
+  colorMode(HSB,800,600,100);
 }
 
 void draw() {
@@ -23,6 +24,7 @@ void draw() {
   //add velocity to position
   x += velX;
   y += velY;
+  fill(x,y,100);
 
   //bounce ball if it hits walls
   if (x + diam/2 >= width) {
