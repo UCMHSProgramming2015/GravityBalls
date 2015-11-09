@@ -1,5 +1,5 @@
 //declare variables
-float x, y, velX, velY, diam, gravity;
+float x, y, velX, velY, diam, gravity, airResistance;
 
 void setup() {
   //set size of canvas
@@ -18,6 +18,7 @@ void draw() {
   //draw background to cover previous frame
   background(0);
   gravity = 0.45;
+  airResistance = 0.99;
   //draw ball
   ellipse(x, y, diam, diam);
 
@@ -27,7 +28,7 @@ void draw() {
   fill(x,y,100);
   
   velY += gravity; //add gravity
-
+  velY *= airResistance; //make sure the ball doesn't get higher than starting point
   //bounce ball if it hits walls
   if (x + diam/2 >= width) {
     velX = -abs(velX);    //if the ball hits the right wall, assign x velocity the negative version of itself
