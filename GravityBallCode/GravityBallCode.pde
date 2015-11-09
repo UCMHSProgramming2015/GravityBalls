@@ -1,49 +1,55 @@
 //declare variables
-float x, y, velX, velY, diam, g;
+float diam, g;
+float [] x = new float [40];
+float [] y = new float [40];
+float [] velx = new float [40];
+float [] vely = new float [40];
+
 
 void setup() {
   //set size of canvas
   size(600, 600);
 
   //initialize variables
-  x = width/2;
-  y = height/2;
-  diam = 80;
-  g = 1;
-  velX = 8;
-  velY = 10;
+  for (int i=0; i<40; i++){
+    x[i] = random(width);
+    y[i] = random(height/2);
+    diam = 40;
+    g = 1;
+    velx[i] = 8;
+    vely[i] = 10;
+  }
 }
 
 void draw() {
   //draw background to cover previous frame
   background(0);
 
-  //make the ball suitable for my aesthetic theme
-  noFill();
-  strokeWeight(15);
-  colorMode(HSB, 400);
-  stroke(x,y,400);
+  for (int i=0; i<40; i++){
+    //make the ball suitable for my[i] aesthetic theme
+    noFill();
+    strokeWeight(10);
+    colorMode(HSB, 400);
+    stroke(x[i],y[i],400);
+    
+    //draw ball
+    ellipse(x[i], y[i], diam, diam);
   
-  //draw ball
-  ellipse(x, y, diam, diam);
-
-  //add velocity to position
-  //x += velX;
-  y += velY;
-  velY += g;
-
-  //bounce ball if it hits walls
-  if (x + diam/2 >= width) {
-    velX = -abs(velX);    //if the ball hits the right wall, assign x velocity the negative version of itself
-  } else if (x - diam/2 <= 0) {
-    velX = abs(velX);     //if the ball hits the left wall, assign x velocity the positive version of itself
-  }
-  if (y + diam/2 >= height) {
-    velY = -abs(velY) +2;
-  } else if (y - diam/2 <= 0) {
-    velY = abs(velY);
-  }
-  if (y + diam/2 >= height && velY>=0) {
-    g=0;
+    //add velocity[i] to position
+    x[i] += velx[i];
+    y[i] += vely[i];
+    vely[i] += g;
+    
+    //bounce ball if it hits walls
+    if (x[i] + diam/2 >= width) {
+      velx[i] = -abs(velx[i]);    //if the ball hits the right wall, assign x[i] velocity[i] the negative version of itself
+    } else if (x[i] - diam/2 <= 0) {
+      velx[i] = abs(velx[i]);     //if the ball hits the left wall, assign x[i] velocity[i] the positive version of itself
+    }
+    if (y[i] + diam/2 >= height) {
+      vely[i] = -abs(vely[i]) +2;
+    } else if (y[i] - diam/2 <= 0) {
+      vely[i] = abs(vely[i]);
+    }
   }
 }
