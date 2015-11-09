@@ -49,6 +49,12 @@ void draw() {
     } else if (y[i] - diam[i]/2 <= 0) {
       velY[i] = abs(velY[i]);
     }
+    
+  if (y[i] >= height) { //make sure ball doesn't escape from bottom of screen
+    y[i] = height - velY[i];
+    velY[i] = -abs(velY[i]);
+  }  
+    
   }
 
 }
