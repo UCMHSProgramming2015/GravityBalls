@@ -10,12 +10,12 @@ void setup() {
   y = height/2;
   diam = 80;
   velY = random(0, 5);
-  grav = .1;
+  grav = 1;
 }
 
 void draw() {
   //draw background to cover previous frame
-
+  background(0);
   
   //draw ball
   ellipse(x, y, diam, diam);
@@ -31,6 +31,7 @@ void draw() {
 
   if (y + diam/2 >= height) {
     velY = -abs(velY);
+    y = height - diam/2;
   } else if (y - diam/2 <= 0) {
     velY = abs(velY);
   }
