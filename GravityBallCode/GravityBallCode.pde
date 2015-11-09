@@ -7,6 +7,8 @@ float[] y = new float[count];
 float[] velX = new float[count];
 float[] velY = new float[count];
 float[] diam = new float[count];
+PImage bg;
+
 void setup() {
   //set size of canvas
   size(800, 600);
@@ -19,12 +21,13 @@ void setup() {
   velX[i] = random(-5, 5);
   velY[i] = random(-5, 5);
   colorMode(HSB,800,600,100);
+  bg = loadImage("bg.jpg");
  }
 }
 
 void draw() {
   //draw background to cover previous frame
-  background(0);
+  background(bg);
   for (int i = 0; i < count; i++){
     gravity = 0.45;
     airResistance = 0.99;
