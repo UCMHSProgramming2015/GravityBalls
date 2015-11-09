@@ -10,24 +10,25 @@ void setup() {
   y = height/2;
   diam = 80;
   velY = random(0, 5);
-  grav = 1;
+  grav = .1;
 }
 
 void draw() {
   //draw background to cover previous frame
-  background(0);
 
+  
   //draw ball
   ellipse(x, y, diam, diam);
 
-  //add velocity to position
+  //add velocity to position and acceleration to velocity
   velY += grav;
   y += velY;
  
   
-  //add acceleration to velocity
+ 
 
   //bounce ball if it hits walls
+
   if (y + diam/2 >= height) {
     velY = -abs(velY);
   } else if (y - diam/2 <= 0) {
