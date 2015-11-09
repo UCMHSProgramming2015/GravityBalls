@@ -1,17 +1,28 @@
 //declare variables
-float x, y, velX, velY, diam, grav;
+int count = 30;
+
+float[] x = new float[count];
+float[] y = new float[count];
+float[] velX = new float [count];
+float[] velY = new float [count];
+float[] diam = new float [count];
+float[] grav = new float [count];
 
 void setup() {
   //set size of canvas
   size(800, 600);
 
   //initialize variables
-  x = width/2;
-  y = height/2;
-  diam = 80;
-  grav = .3;
-  velX = 2;
-  velY = 0;
+  
+  for (int i = 0; i < count; i++){
+  x[i] = width/2;
+  y[i] = height/2;
+  diam[i] = 80;
+  grav[i] = .3;
+  velX[i] = 2;
+  velY[i] = 0;
+  i++;
+  }
  
 }
 
