@@ -12,13 +12,13 @@ class Ball{
     //initialize variables
     x = random(width);
     y = random(height);
-    diam = 80;
+    diam = random(10, 90);
     velX = random(-5, 5);
     velY = random(-5, 5);
     hue = random(255);
   }
   
-  void run(){
+  void run(Ball[] balls){
     //bounce ball if it hits walls
     if (x + diam/2 >= width) {
       velX = -abs(velX);    //if the ball hits the right wall, assign x velocity the negative version of itself
@@ -34,6 +34,21 @@ class Ball{
       velY = abs(velY);
       y = diam/2;
     }
+    
+    //bounce off of the mouse cursor
+    if(dist(x, y, mouseX, mouseY) < diam){
+      velY = -10;
+    }
+    
+    //bounce off of other balls
+    for(Ball ball : balls){
+      if(ball != this && dist(x, y, ball.x, ball.y) < diam/2 + ball.diam/2){
+        x += (ball.diam/2 + diam/2)*((x - ball.x)/dist(x, y, ball.x, ball.y))*0.1;
+        y += (ball.diam/2 + diam/2)*((y - ball.y)/dist(x, y, ball.x, ball.y))*0.1;
+        velX *= 0.9;
+        velY *= 0.9;
+      }  
+    }
       
     //simulate air resistance
     velY *= air_resistance;
@@ -44,8 +59,6 @@ class Ball{
     //add velocity to position
     x += velX;
     y += velY;
-    
-    
     
     //increment the hue
     hue++;
@@ -79,7 +92,7 @@ void draw() {
   background(0);
   
   for(Ball ball: balls){
-    ball.run();
+    ball.run(balls);
     ball.bdraw();
   }
 }
