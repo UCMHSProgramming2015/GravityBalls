@@ -1,38 +1,39 @@
-//declare variables
-float x, y, velX, velY, diam;
+int count = 30;
+float[] x = new float[count];
+float[] y = new float[count];
+float[] velX = new float[count];
+float[] velY = new float[count];
+float[] diam = new float[count];
+float g;
 
 void setup() {
-  //set size of canvas
   size(800, 600);
-
-  //initialize variables
-  x = width/2;
-  y = height/2;
-  diam = 80;
-  velX = random(-5, 5);
-  velY = random(-5, 5);
+  g = .1;
+  for (int i = 0; i < count; i++){
+  x[i] = random(width);
+  y[i] = random(height);
+  diam[i] = 40;
+  velX[i] = random(-7, 7);
+  velY[i] = random(-7, 7);
+  }
 }
 
 void draw() {
-  //draw background to cover previous frame
   background(0);
-
-  //draw ball
-  ellipse(x, y, diam, diam);
-
-  //add velocity to position
-  x += velX;
-  y += velY;
-
-  //bounce ball if it hits walls
-  if (x + diam/2 >= width) {
-    velX = -abs(velX);    //if the ball hits the right wall, assign x velocity the negative version of itself
-  } else if (x - diam/2 <= 0) {
-    velX = abs(velX);     //if the ball hits the left wall, assign x velocity the positive version of itself
+  for (int i = 0; i < count; i++){
+  ellipse(x[i], y[i], diam[i], diam[i]);
+  velY[i] = velY[i] + g;
+  x[i] += velX[i];
+  y[i] += velY[i];
+  if (x[i] + diam[i]/2 >= width) {
+    velX[i] = -abs(velX[i]);
+  } else if (x[i] - diam[i]/2 <= 0) {
+    velX[i] = abs(velX[i]);
   }
-  if (y + diam/2 >= height) {
-    velY = -abs(velY);
-  } else if (y - diam/2 <= 0) {
-    velY = abs(velY);
+  if (y[i] + diam[i]/2 >= height) {
+    velY[i] = -abs(velY[i]);
+  } else if (y[i] - diam[i]/2 <= 0){
+    velY[i] = abs(velY[i]);
+  }
   }
 }
