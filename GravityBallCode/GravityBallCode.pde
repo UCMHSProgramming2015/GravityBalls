@@ -27,11 +27,11 @@ void draw() {
   //draw ball
   for (int i = 0; i < count; i++) {
    if (dist(x[i], y[i], mouseX, mouseY) < diam[i]/2) {
-    fill(0, 0, 255);
+    fill(0, 0, 255, 125);
     stroke(random(255));
    }
   ellipse(x[i], y[i], diam[i], diam[i]);
-  fill(255, 0, 0);
+  fill(255, 0, 0, 255);
   stroke(0);
 
   //add velocity to position and acceleration to velocity
