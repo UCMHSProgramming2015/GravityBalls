@@ -1,21 +1,32 @@
-float x, y, velX, velY, diam, grav;
+int count = 10;
+//declare arrays
+float[] x = new float [count];
+float[] y = new float [count];
+float[] velX = new float [count];
+float[] velY = new float [count];
+float[] diam = new float [count];
+float[] grav = new float [count];
+
 void setup() {
   size (800,600);
-
-x= width/2;
-y= height/2;
-diam = 80;
-velX = 0;
-velY = 0;
-grav = .8;
+  for(int i = 0; i<count; i++){
+x[i]= random(width);
+y[i]= height/2;
+diam[i] = 80;
+velX[i] = 0;
+velY[i] = 0;
+grav[i] = .8;
+  }
 }
 void draw() {
-//  background(0);
-  ellipse (x,y, diam, diam);
-  velY+= grav;
-  x+=velX;
-  y+=velY;
-  if (y+ diam/2 >= height) {
-   velY= -abs(velY);
+background(0);
+for(int i = 0; i<count; i++){
+  ellipse (x[i],y[i], diam[i], diam[i]);
+  velY[i]+= grav[i];
+  x[i]+=velX[i];
+  y[i]+=velY[i];
+  if (y[i]+ diam[i]/2 >= height) {
+   velY[i]= -abs(velY[i]);
   }
+}
 }
