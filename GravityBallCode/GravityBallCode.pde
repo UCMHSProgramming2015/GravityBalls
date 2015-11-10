@@ -1,5 +1,5 @@
 //declare variables
-float x, y, velX, velY, diam;
+float x, y, velX, velY, diam, g;
 
 void setup() {
   //set size of canvas
@@ -11,11 +11,14 @@ void setup() {
   diam = 80;
   velX = random(-5, 5);
   velY = random(-5, 5);
+  g = .1;
 }
 
 void draw() {
   //draw background to cover previous frame
   background(0);
+
+  velY = velY + g;
 
   //draw ball
   ellipse(x, y, diam, diam);
