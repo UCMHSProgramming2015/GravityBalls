@@ -32,9 +32,9 @@ void draw() {
     strokeWeight(12);
     colorMode(HSB, 700);
     if(colorSet == 0) {
-      stroke(x[i],y[i],700,400);
+      stroke(x[i],y[i],800,400);
     } else if(colorSet == 1){
-      stroke(y[i],x[i],700,400);
+      stroke(y[i],x[i],800,400);
     }
     
     //make balls jump when you poke them
@@ -72,4 +72,12 @@ void mousePressed() {
    else if (colorSet == 1) {
      colorSet = 0;
    }
+}
+
+void keyPressed(){
+  for (int i=0; i<30; i++){
+    if (key == ' ') {
+      y[i] = 0;
+    }
+  }
 }
