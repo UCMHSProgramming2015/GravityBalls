@@ -40,7 +40,7 @@ void draw() {
     x[i] += velX[i];
     y[i] += velY[i];
     
-    if(dist(x[i],y[i],mouseX, mouseY) <= diam[i]/2) { //if mouse is in the circle
+    if(dist(x[i],y[i],mouseX, mouseY) <= diam[i]/2) { //if mouse is in the circle (if the distance between mouse and center is less than the radius)
       cColor[i] = color(random(255),random(255),random(255));
     }
     
@@ -51,7 +51,7 @@ void draw() {
       velX[i] = abs(velX[i]);     //if the ball hits the left wall, assign x velocity the positive version of itself
     }
     if (y[i] + diam[i]/2 >= height) {
-      velY[i] = -abs(velY[i]+gravity);
+      velY[i] = -abs(velY[i]+gravity); //to make it avoid sinking since one frame is skipped
       //y[i] = height - diam[i];
     } else if (y[i] - diam[i]/2 <= 0) {
       velY[i] = abs(velY[i]);
