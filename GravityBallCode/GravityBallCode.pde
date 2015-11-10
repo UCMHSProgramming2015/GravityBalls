@@ -1,6 +1,6 @@
 //declare variables
 int count=30;
-
+float gravity=.1;
 float[] x=new float[count];
 float[]y=new float[count];
 float[]velX= new float[count];
@@ -8,15 +8,16 @@ float[]velY= new float[count];
 float[] diam= new float [count];
 void setup() {
   //set size of canvas
-  size(1300,800);
-    int i=0;
+  size(1300, 800);
+  rect(0, 200, 800, 800);
+  int i=0;
   while (i < count) {
     //initialize variables
     x[i] = random(width);
     y[i] = random(height);
     diam[i] =(60);
-    velX[i] = random(-5,5);
-    velY[i] = random(-5,5);
+    velX[i] = random(-5, 5);
+    velY[i] = random(-5, 5);
     i++;
   }
 }
@@ -32,11 +33,14 @@ void draw() {
 
 void drawcircle() {
   int i =0;
-  for(i=0;i<count;i++) {
-  
-   //draw ball
+    for (i=0; i<count; i++) {
+
+    //draw ball
 
     ellipse(x[i], y[i], diam[i], diam[i]);
+    velY[i]=velY[i]+gravity;
+    y[i]+=velY[i];
+   
 
     //add velocity to position
     x[i]+= velX[i];
@@ -53,5 +57,5 @@ void drawcircle() {
     } else if (y[i] - diam[i]/2 <= 0) {
       velY[i] = abs(velY[i]);
     }
-   }
+  }
 }
