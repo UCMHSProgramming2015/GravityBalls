@@ -11,6 +11,7 @@ float[] grav = new float [count];
 void setup() {
   //set size of canvas
   size(800, 600);
+  textSize(40);
 
   //initialize variables
   
@@ -49,5 +50,12 @@ void draw() {
     velX[i] = abs(velX[i]);     //if the ball hits the left wall, assign x velocity the positive version of itself
   }
   
+
+  if(dist(mouseX, mouseY, x[i], y[i]) <= diam[i]/2){
+    print("      splat tim");
+    fill(255, 165, 0);  //orange
+    text("SPLAT TIM", width/2-100, height/2);
+  } else if(dist(mouseX, mouseY, x[i], y[i]) >= diam[i]/2);
+    fill(255);
   }
 }
