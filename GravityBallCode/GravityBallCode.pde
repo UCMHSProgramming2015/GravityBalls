@@ -49,7 +49,10 @@ void draw() {
     velY[i] = abs(velY[i]);
   }
   if (y[i] + diam[i]/2 >= height){
-    y[i] = height - diam[i]/2;
+    y[i] = height - diam[i]/2; //when ball stops bouncing, it rolls on the surface
+  }
+  if (dist(mouseX,mouseY,x[i],y[i]) <= diam[i]/2){
+    text("you're gonna have a bad time.", width/2, 200);
   }
   }
 }
