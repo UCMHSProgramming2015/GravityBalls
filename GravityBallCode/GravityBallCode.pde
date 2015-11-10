@@ -6,6 +6,7 @@ float[] y = new float[count];
 float[] velX = new float[count];
 float[] velY = new float[count];
 float[] diam = new float[count];
+color[] cColor = new color[count];
 
 
 void setup() {
@@ -18,6 +19,7 @@ void setup() {
     diam[i] = 80;
     velX[i] = random(-5, 5);
     velY[i] = random(-5, 5);
+    cColor[i] = color(255);
   }
   gravity = 1;
 }
@@ -28,6 +30,7 @@ void draw() {
 
   //draw ball
   for(int i = 0; i < count; i++) {
+    fill(cColor[i]); //fill the circle color
     ellipse(x[i], y[i], diam[i], diam[i]);
   
     //add velocity
@@ -36,7 +39,11 @@ void draw() {
     //add velocity to position
     x[i] += velX[i];
     y[i] += velY[i];
-  
+    
+    if(dist(x[i],y[i],mouseX, mouseY) <= diam[i]/2) { //if mouse is in the circle
+      cColor[i] = color(random(255),random(255),random(255));
+    }
+    
     //bounce ball if it hits walls
     if (x[i] + diam[i]/2 >= width) {
       velX[i] = -abs(velX[i]);    //if the ball hits the right wall, assign x velocity the negative version of itself
