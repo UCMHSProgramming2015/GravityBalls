@@ -1,5 +1,6 @@
 //declare variables
 int count = 50;
+float gravity =.1;
 
 //declare arrays
 float []x= new float[count];
@@ -14,8 +15,8 @@ void setup() {
 
   //initialize variables
   for (int i=0; i<count; i++) {
-    x[i] = width/2;
-    y[i] = height/2;
+    x[i] = random(width);
+    y[i] = random(height);
     diam[i] = random(80);
     velX[i] = random(-5, 5);
     velY[i] = random(-5, 5);
@@ -28,7 +29,8 @@ void draw() {
   for (int i=0; i<count; i++) {
     //draw ball
     ellipse(x[i], y[i], diam[i], diam[i]);
-
+    //giving balls gravity
+    velY[i]+=gravity;
     //add velocity to position
     x[i] += velX[i];
     y[i] += velY[i];
