@@ -36,14 +36,9 @@ void draw() {
     ellipse(x[i], y[i], diam, diam);
   
     //add velocity[i] to position
-    
-    //if(vely[i]<=0) {
-    //vely[i] = 0;
-    //} else {
-    ////x[i] += velx[i];
-    //y[i] += vely[i];
-    //vely[i] += g;
-    //}
+    x[i] += velx[i];
+    y[i] += vely[i];
+    vely[i] += g;
     
     //bounce ball if it hits walls
     if (x[i] + diam/2 >= width) {
@@ -53,6 +48,7 @@ void draw() {
     }
     if (y[i] + diam/2 >= height) {
       vely[i] = -abs(vely[i]) +2;
+      y[i] = height-diam/2;
     } else if (y[i] - diam/2 <= 0) {
       vely[i] = abs(vely[i]);
     }
