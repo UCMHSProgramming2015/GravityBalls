@@ -19,7 +19,7 @@ void setup() {
     diam[i] = 80;
     velX[i] = random(-5, 5);
     velY[i] = random(-5, 5);
-    gravity[i] = 1;
+    gravity[i] = .5;
     i++;
   }
 }
@@ -30,13 +30,16 @@ void draw() {
 
   //draw ball
   for (int i=0; i < count; i++) { 
+    noStroke();
+    fill(x[i], y[i], random(255), 70);
     ellipse(x[i], y[i], diam[i], diam[i]);
+
 
     //add velocity to position
 
     velY[i] += gravity[i];
     velY[i] *= 0.99;
-    
+
     x[i] += velX[i];
     y[i] += velY[i];
 
@@ -55,6 +58,10 @@ void draw() {
     if (y[i] == height - diam[i]/2) {
       velY[i] = -abs(velY[i]);
       ;
+    }
+    if (dist(x[i], y[i], mouseX, mouseY) <= diam[i]/2) {
+      fill(255);
+      ellipse(x[i], y[i], 2*diam[i], 2*diam[i]);
     }
   }
 }
