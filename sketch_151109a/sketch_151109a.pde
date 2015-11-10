@@ -28,5 +28,8 @@ for(int i = 0; i<count; i++){
   if (y[i]+ diam[i]/2 >= height) {
    velY[i]= -abs(velY[i]);
   }
+  if(dist(x[i],y[i],mouseX,mouseY) <= diam[i]/2){
+  background(random(255), random(255), random(255));
+   }
 }
 }
