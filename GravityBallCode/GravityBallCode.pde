@@ -11,7 +11,7 @@ void setup() {
   diam = 80;
   velX = random(-5, 5);
   velY = random(-5, 5);
-  g = 2;
+  g = .1;
 }
 
 void draw() {
@@ -21,9 +21,10 @@ void draw() {
   //draw ball
   ellipse(x, y, diam, diam);
 
-  //add velocity to position
+  //add gravity to velocity
   velY += g;
   
+  //add velocity to position
   x += velX;
   y += velY;
 
