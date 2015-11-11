@@ -1,4 +1,4 @@
-int count = 1004;
+int count = 4;
 
 
 
@@ -10,6 +10,7 @@ float [] velx = new float [count];
 float [] vely= new float [count]; 
 float [] diam = new float [count]; 
 float [] g = new float [count]; 
+float [] f = new float [count];
 
 void setup() {
   //set size of canvas
@@ -23,10 +24,12 @@ void setup() {
     velx[i] = random(-20, 20);
     vely[i] = random(-20, 20);
     g[i] = 0.2;
+    f[i] = 0.9555;
   }
 }
 
 void draw() {
+  frameRate(300); 
   //draw backg[i]round to cover previous frame
   background(0);
 
@@ -52,6 +55,10 @@ void draw() {
     }
     if (y[i] + diam[i]/2 >= height) {
       vely[i] = -abs(vely[i]) + g[i];
+      y[i] = height - diam[i]/2; // prevents ball from going below screen
+      if (vely[i] <= 0){
+      velx[i] = velx[i]*f[i]; //gives ball friction so it'll roll to a stop
+      }
     } else if (y[i] - diam[i]/2 <= 0) {
       vely[i] = abs(vely[i]) + g[i];
     }
