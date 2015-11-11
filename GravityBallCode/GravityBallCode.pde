@@ -1,5 +1,5 @@
 //declare variables
-float x, y, velX, velY, diam;
+float x, y, velX, velY, diam, gravity;
 
 void setup() {
   //set size of canvas
@@ -8,9 +8,10 @@ void setup() {
   //initialize variables
   x = width/2;
   y = height/2;
-  diam = 80;
+  diam = 60;
   velX = random(-5, 5);
   velY = random(-5, 5);
+  gravity=.1;
 }
 
 void draw() {
@@ -22,7 +23,9 @@ void draw() {
 
   //add velocity to position
   x += velX;
-  y += velY;
+  y += velY; 
+  //add gravity to velocity
+  velY +=gravity;
 
   //bounce ball if it hits walls
   if (x + diam/2 >= width) {
