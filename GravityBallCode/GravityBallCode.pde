@@ -1,6 +1,6 @@
 //declare variables
 float g;
-int count = 8000;
+int count = 9880;
 float []x = new float [count];
 float []y= new float [count];
 float []velX = new float [count];
@@ -14,7 +14,7 @@ void setup() {
     //initialize variables
     x[i] = width/2;
     y[i] = height/2;
-    diam[i] = 8;
+    diam[i] = random(8);
     velX[i] = random(-5, 5);
     velY[i]= random(10);
     g =.1;
@@ -27,7 +27,7 @@ void draw() {
   //draw background to cover previous frame
   background(0);
 
-
+mouseClicked(); {
   for (int i=0; i < count; i++) { //for statement adding arrays 
 
     //draw ball
@@ -68,6 +68,7 @@ void draw() {
       y[i]= height -1;
       velX[i]= velX[i]*.25;
     }
+  }
   }
   fill(255);
   ellipse(400, 300, 75, 75);
