@@ -8,6 +8,9 @@ float[] velX = new float[count];
 float[] velY = new float[count];
 float[] diam = new float[count];
 float[] g = new float[count];
+float[] br = new float[count]; //color the ball
+float[] bg = new float[count];
+float[] bb = new float[count];
 
 void setup() {
   //set size of canvas
@@ -21,6 +24,9 @@ void setup() {
     velY[i] = random(-5,5);
     diam[i] = random(5,100); //make each ball a radically different size
     g[i] = 0.1;
+    br[i] = random(255);
+    bg[i] = random(255);
+    bb[i] = random(255);
     i++; //increase i by 1 during each cycle; have different instances of the above variables for each ball
   }
 }
@@ -31,6 +37,10 @@ void draw() {
 
   for(int i = 0; i < count; i++){ //initialize i as 0; draw 300 balls and change the variables each time
 
+    //color the balls
+    stroke(br[i],bg[i],bb[i]);
+    fill(br[i],bg[i],bb[i], 50);
+    
     //draw ball
     ellipse(x[i], y[i], diam[i], diam[i]);
 
