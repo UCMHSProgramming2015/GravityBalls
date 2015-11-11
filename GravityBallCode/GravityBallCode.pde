@@ -1,5 +1,5 @@
 //declare variables
-int q = 500;
+int q = 50;
 float[] y = new float [q];
 float[] velX = new float [q];
 float[] velY = new float [q];
@@ -27,7 +27,7 @@ void draw() {
 
   //draw ball
   for (int i = 0; i < q; i++) {
-    fill(random(255), random(255), 0);
+    fill(random(255),random(255),random(255));
     x[i] += velX[i];
     velY[i] = velY[i] + gravity;
     y[i] += velY[i];
@@ -37,10 +37,13 @@ void draw() {
     } else if (x[i] - diam[i] <= 0) {
       velX[i] = abs(velX[i]);     //if the ball hits the left wall, assign x velocity the positive version of itself
     }
-    if (y[i] + diam[i] >= height) {
+    if (y[i] + diam[i]/2 > height) {
       velY[i] = -abs(velY[i]);
     } else if (y[i] - diam[i] <= 0) {
       velY[i] = abs(velY[i]);
+    }
+    if (y[i] >= height) {
+      y[i] = height - diam[i]/2;
     }
   }
 }
