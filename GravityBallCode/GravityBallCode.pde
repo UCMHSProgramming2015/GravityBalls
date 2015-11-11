@@ -17,8 +17,8 @@ void setup()
     y[i]= random(height);
     diam[i] = 50;
     y2[i] = height - diam[i]/2;
-    velX[i] = random(-5, 5);
-    velY[i]= random(-5, 5);
+    velX[i] = random(-4.9, 5);
+    velY[i]= random(-4.9, 5);
     gravity[i]= 0.4;
     friction[i] = 0.95;
   }
