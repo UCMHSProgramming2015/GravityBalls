@@ -25,8 +25,8 @@ ellipse(x,y,diam,diam);
 x+=velX;
 y+=velY;
 
-//add gravity to the ball
-y+=gravity;
+//add gravity to the ball (acceleration=change in velocity over time; change the velocity)
+velY+=gravity;
 
 //bounce ball if it hits walls
 if(x+diam/2>=width){
@@ -41,9 +41,7 @@ if(y+diam/2>=height){
   }
   
 //add gravity (acceleration in downward direction)
-if(y+diam/2>=height){
-  gravity=-abs(gravity);
-  }else if(y-diam/2<=0){
-    gravity=abs(gravity);
-}
+if(velY+diam/2>=height){
+  gravity=-abs(gravity);  //if the ball hits the bottom wall, assign y velocity the negative version of itself
+  }
 }
