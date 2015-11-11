@@ -1,5 +1,5 @@
 //declare variables
-float x, y, velX, velY, diam;
+float x, y, velX, velY, diam, gravity;
 
 void setup() {
   //set size of canvas
@@ -11,6 +11,7 @@ void setup() {
   diam = 80;
   velX = random(-5, 5);
   velY = random(-5, 5);
+  gravity = 1.04;
 }
 
 void draw() {
@@ -32,7 +33,9 @@ void draw() {
   }
   if (y + diam/2 >= height) {
     velY = -abs(velY);
-  } else if (y - diam/2 <= 0) {
-    velY = abs(velY);
-  }
+    y = y- diam/2;
+  }//} else if (y - diam/2 <= 0) {
+  //  velY = abs(velY);
+  //}
+  velY = velY + gravity;
 }
