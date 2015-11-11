@@ -31,19 +31,23 @@ void draw() {
     //draw ball
     ellipse(x[i], y[i], diam, diam);
   
-  //add velocity to position
-  x += velX;
-  y += velY;
-
-  //bounce ball if it hits walls
-  if (x + diam/2 >= width) {
-    velX = -abs(velX);    //if the ball hits the right wall, assign x velocity the negative version of itself
-  } else if (x - diam/2 <= 0) {
-    velX = abs(velX);     //if the ball hits the left wall, assign x velocity the positive version of itself
-  }
-  if (y + diam/2 >= height) {
-    velY = -abs(velY);
-  } else if (y - diam/2 <= 0) {
-    velY = abs(velY);
+    //add acceleration to velocity
+    velY[i] += gravity;
+    
+    //add velocity to position
+    x[i] += velX[i];
+    y[i] += velY[i];
+  
+    //bounce ball if it hits walls
+    if (x[i] + diam/2 >= width) {
+      velX[i] = -abs(velX[i]);    //if the ball hits the right wall, assign x velocity the negative version of itself
+    } else if (x[i] - diam/2 <= 0) {
+      velX[i] = abs(velX[i]);     //if the ball hits the left wall, assign x velocity the positive version of itself
+    }
+    if (y[i] + diam/2 >= height) {
+      velY[i] = -abs(velY[i]);
+    } else if (y[i] - diam/2 <= 0) {
+      velY[i] = abs(velY[i]);
+    }
   }
 }
