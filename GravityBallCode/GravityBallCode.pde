@@ -1,6 +1,7 @@
 //declare variables
 float gravity, airResistance;
 int count = 30;
+int radius = 80;
 //declare array
 float[] x = new float[count];
 float[] y = new float[count];
@@ -17,7 +18,7 @@ void setup() {
  for(int i = 0; i < count; i++) {
   x[i] = width/2;
   y[i] = height/2;
-  diam[i] = 80;
+  diam[i] = radius*2;
   velX[i] = random(-5, 5);
   velY[i] = random(-5, 5);
   colorMode(HSB,800,600,100);
@@ -53,16 +54,18 @@ void draw() {
       velY[i] = abs(velY[i]);
     }
     
-  if (y[i] >= height) { //make sure ball doesn't escape from bottom of screen
-    y[i] = height - velY[i];
-    velY[i] = -abs(velY[i]);
-  }  
-
+    if (y[i] >= height) { //make sure ball doesn't escape from bottom of screen
+      y[i] = height - velY[i];
+      velY[i] = -abs(velY[i]);
+    }  
   
-  if (sq(mouseX - x[i]) + sq(mouseY - y[i]) < sq(diam[i]/2)) { //increase size if mouse is inside circle
-    diam[i] += 2;
-  }
     
+    if (sq(mouseX - x[i]) + sq(mouseY - y[i]) < sq(diam[i]/2)) { //increase size if mouse is inside circle
+      diam[i] += diam[i]/50;
+    }
+    else if (diam[i] > radius){ //automatically decrease if mouse is not in contact
+      diam[i] -= diam[i]/50;
+    }
     
   }
 }
