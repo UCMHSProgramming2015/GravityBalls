@@ -17,6 +17,7 @@ void setup() {
     x[i] = random(width);
     y[i] = random(height);
     velX[i] = random(-5, 5);
+    //add gravity to ball
     velY[i] = 5+gravity;
     diam[i] = random(20,50);
     i++;
@@ -47,6 +48,7 @@ void draw() {
   } else if (y[i] - diam[i]/2 <= 0) {
     velY[i] = abs(velY[i]);
   }
+  //add gravity to ball
   if(y[i]<height-diam[i]/2){
     velY[i] += gravity;
   }
