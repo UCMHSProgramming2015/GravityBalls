@@ -1,6 +1,9 @@
 //declare variables
+
+//number of balls
 int count = 150;
 
+//properties of individual ball (array)
 float[] gravity = new float[count];
 float[] x = new float[count];
 float[] y = new float[count];
@@ -13,9 +16,11 @@ float[] b = new float[count];
 float[] t = new float[count];
 
 void setup() {
+
   //set size of canvas
   size(800, 600);
 
+  //creates 150 balls with unique properties
   for (int i = 0; i < count; i++) {
 
     //initialize variables
@@ -33,19 +38,22 @@ void setup() {
 }
 
 void draw() {
+
   //draw background to cover previous frame
   background(0);
 
+  //regenerates 150 balls with unique properties
   for (int i = 0; i < count; i++) {
 
-    //draw ball
+    //draw ball with stroke and fill
     stroke(r[i], g[i], b[i]);
     fill(r[i], g[i], b[i], t[i]);
     ellipse(x[i], y[i], diam[i], diam[i]);
 
-    //add velocity to position
+    //add gravity to velocity
     velY[i] += gravity[i];
 
+    //add velocity to position
     x[i] += velX[i];
     y[i] += velY[i];
 
@@ -60,8 +68,9 @@ void draw() {
     } else if (y[i] - diam[i]/2 <= 0) {
       velY[i] = abs(velY[i]);
     }
-    
-    if (y[i] + diam[i]/2 > height){
+
+    //keep ball on the canvas: prevent it from sinking into the ground
+    if (y[i] + diam[i]/2 > height) {
       y[i] = height - diam[i]/2;
     }
   }
