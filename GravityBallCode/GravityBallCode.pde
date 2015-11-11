@@ -43,9 +43,10 @@ void draw() {
     }
     if (y[i] + diam[i]/2 >= height) {
       velY[i] = -abs(velY[i]);
-    } 
+    y[i]= height - diam[i]/2;
     //else if (y[i] - diam[i]/2 <= 0) {
     //  velY[i] = abs(velY[i]);
     //}
+  }
   }
 }
