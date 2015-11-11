@@ -1,16 +1,19 @@
 //declare variables
 float gravity, diam;
-int count = 30;
+int count = 300;
+//create arrays
 float[] x = new float[count];
 float[] y = new float[count];
 float[] velX = new float[count];
 float[] velY = new float[count];
 float[] colors = new float[count];
+
 void setup() {
   //set size of canvas
   size(800, 600);
   gravity = 1;
   //initialize variables
+  //create values in arrays
   for (int i = 0; i<count; i++) {
     x[i] = width/2;
     y[i] = 100;
@@ -25,11 +28,13 @@ void draw() {
   //draw background to cover previous frame
   background(0);
 
-  //draw ball
+  //draw ball for each array
   for (int i = 0; i<count; i++) {
     noStroke();
+    //different colors
     fill(colors[i]);
     ellipse(x[i], y[i], diam, diam);
+    //add gravity
     velY[i] += gravity;
 
     //add velocity to position
