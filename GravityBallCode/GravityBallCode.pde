@@ -7,6 +7,7 @@ float[] y = new float[count];
 float[] velX = new float[count];
 float[] velY = new float[count];
 float[] diam = new float[count];
+float[] g = new float[count];
 
 void setup() {
   //set size of canvas
@@ -19,9 +20,6 @@ void setup() {
     velX[i] = random(-5,5); //move each ball at a max rate of 5 in a random direction
     velY[i] = random(-5,5);
     diam[i] = random(5,100); //make each ball a radically different size
-    r[i] = random(0,255); //randomize the color of each ball
-    g[i] = random(0,255);
-    b[i] = random(0,255);
     g[i] = 0.1;
     i++; //increase i by 1 during each cycle; have different instances of the above variables for each ball
   }
