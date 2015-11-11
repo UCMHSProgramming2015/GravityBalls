@@ -35,7 +35,7 @@ void draw() {
   //draw background to cover previous frame
   background(0);
 
-  for(int i = 0; i < count; i++){ //initialize i as 0; draw 300 balls and change the variables each time
+  for(int i = 0; i < count; i++){ //initialize i as 0; draw 30 balls and change the variables each time
 
     //color the balls
     stroke(br[i],bg[i],bb[i]);
