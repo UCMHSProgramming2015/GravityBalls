@@ -1,5 +1,5 @@
 //declare variables
-int num = 1;
+int num = 30;
 int i = 0;
 float[] x = new float[num];
 float[] y = new float[num];
