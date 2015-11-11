@@ -1,6 +1,6 @@
 //declare variables
 
-int count=10;
+int count=30;
   //initialize variables
 float[] x = new float[count];
 float[] y = new float[count];
