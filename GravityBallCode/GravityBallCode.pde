@@ -23,7 +23,7 @@ void draw() {
   //add velocity to position
   x += velX;
   y += velY;
-
+  velY+=.2;
   //bounce ball if it hits walls
   if (x + diam/2 >= width) {
     velX = -abs(velX);    //if the ball hits the right wall, assign x velocity the negative version of itself
