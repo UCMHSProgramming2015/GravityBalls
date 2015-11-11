@@ -20,21 +20,21 @@ void setup() {
     velY[i] = random(-5, 5);
     i++; //variable increases until reaches count
   }
-  screen = 0;
-  grav = 0.1;
+  screen = 0; //the intital screen of the program
+  grav = 0.1; //value for gravity that affects the ellipses
 }
 
 void draw() {
-  if (screen ==0) {
+  if (screen ==0) { //when the screen is 0 it displays text
     background(0);
-    fill(random(255), random(255), random(255));
-    textSize(32);
+    fill(random(255), random(255), random(255)); //changes textfill
+    textSize(32); //changes text size
     text("Click to bounce balls!", width/2-160, height/2);
   }
-  if (mousePressed == true) {
+  if (mousePressed == true) { //when mouse is pressed it changes the value of the screen
     screen = 1;
   }
-  if (screen == 1) {
+  if (screen == 1) { //when screen is one it displays ellipses
     circle();
   }
 }
@@ -45,7 +45,7 @@ void circle() {
     //draw ball
     ellipse(x[i], y[i], diam[i], diam[i]); //draw the ellipses in relation to the i variable
     //add velocity to position
-    velY[i] = velY[i] + grav;
+    velY[i] = velY[i] + grav; //adds the value of velocity to gravity
     x[i] += velX[i]; //increase x speed of ellipse
     y[i] += velY[i];  //increase y speed of ellipse
     //bounce ball if it hits walls of the canvas
@@ -63,6 +63,6 @@ void circle() {
 }
 void mousePressed(){
       if (mousePressed) {
-      fill(random(255), random(255), random(255)); //fill of the ellipses
+      fill(random(255), random(255), random(255)); //changes the fill of the ellipses
     }
 }
