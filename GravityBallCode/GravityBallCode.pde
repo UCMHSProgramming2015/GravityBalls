@@ -63,9 +63,11 @@ void draw() {
     if (sq(mouseX - x[i]) + sq(mouseY - y[i]) < sq(diam[i]/2)) { //increase size if mouse is inside circle
       diam[i] += diam[i]/50;
     }
-    else if (diam[i] > radius){ //automatically decrease if mouse is not in contact
+    else if (diam[i] > radius){ //automatically decrease if mouse is not in contact and circle is larger than original size
       diam[i] -= diam[i]/50;
     }
-    
+    if (diam[i] > width || diam[i] > height) { //reset if it gets too big
+      diam[i] = radius*2;
+    }
   }
 }
