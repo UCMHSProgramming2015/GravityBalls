@@ -19,9 +19,8 @@ void draw() {
 
   //draw ball
   ellipse(x, y, diam, diam);
-  if(y<height){
-    velY += 0.5;
-  }
+  velY += gravity;
+  
   //add velocity to position
   x += velX;
   y += velY;
@@ -33,6 +32,7 @@ void draw() {
     velX = abs(velX);     //if the ball hits the left wall, assign x velocity the positive version of itself
   }
   if (y + diam/2 >= height) {
+    y = height-diam/2;
     velY = -abs(velY);
   } else if (y - diam/2 <= 0) {
     velY = abs(velY);
