@@ -7,10 +7,6 @@ float[] y = new float[count];
 float[] velX = new float[count];
 float[] velY = new float[count];
 float[] diam = new float[count];
-float[] r = new float[count]; //create color variables for balls
-float[] g = new float[count];
-float[] b = new float[count];
-float[] inc = new float[count];
 
 void setup() {
   //set size of canvas
@@ -26,7 +22,6 @@ void setup() {
     r[i] = random(0,255); //randomize the color of each ball
     g[i] = random(0,255);
     b[i] = random(0,255);
-    inc[i] = random(0,1);
     g[i] = 0.1;
     i++; //increase i by 1 during each cycle; have different instances of the above variables for each ball
   }
