@@ -1,9 +1,7 @@
 //declare variables
 int screen; //variable that changes canvas
-int count = 12; //number of variables or the number of ellipses
+int count = 30; //number of variables or the number of ellipses
 int i = 0; //intitailize all the variables needed
-int ry;
-int rh;
 float grav;
 float[] x = new float [count];
 float[] y = new float [count];
@@ -15,16 +13,14 @@ void setup() {
   size(800, 600);
   //give each variables values
   while (i < count) {
-    x[i] = width/2+random(-10,10); 
-    y[i] = height/2+random(-10,10);
+    x[i] = width/2+random(-10, 10); 
+    y[i] = height/2+random(-10, 10);
     diam[i] = 50; 
     velX[i] = random(-4, 4); 
     velY[i] = random(-5, 5);
     i++; //variable increases until reaches count
   }
   screen = 0;
-  ry = 0;
-  rh = 30;
   grav = 0.1;
 }
 
@@ -44,9 +40,8 @@ void draw() {
 }
 void circle() {
   //draw background to cover previous frame
-  background(0); 
+  background(0);
   for (int i = 0; i < count; i++) { //using for loop variable is created and increased
-    fill(random(255), random(255), random(255)); //fill of the ellipses
     //draw ball
     ellipse(x[i], y[i], diam[i], diam[i]); //draw the ellipses in relation to the i variable
     //add velocity to position
@@ -61,8 +56,13 @@ void circle() {
     }
     if (y[i] + diam[i]/2 >= height) {
       velY[i] = -abs(velY[i]); //if the ball hits the bottom wall, assign y velocity the negative version of itself
-    } else if (y[i] - diam[i]/2 <= 0 && y[i] - diam[i]/2 <= ry+rh) {
+    } else if (y[i] - diam[i]/2 <= 0) {
       velY[i] = abs(velY[i]); //if the ball hits the top wall, assign x velocity the positive version of itself
     }
   }
+}
+void mousePressed(){
+      if (mousePressed) {
+      fill(random(255), random(255), random(255)); //fill of the ellipses
+    }
 }
