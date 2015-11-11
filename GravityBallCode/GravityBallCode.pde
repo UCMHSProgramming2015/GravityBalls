@@ -59,5 +59,10 @@ void draw() {
     } else if (y[i] - diam[i]/2 <= 0) {
       velY[i] = abs(velY[i]);
     }
+    
+    //prevent ball from phasing through walls
+    if (y[i] > height - diam[i]/2 ){
+      y[i] = height - diam[i]/2;
+    }
   }
 }
