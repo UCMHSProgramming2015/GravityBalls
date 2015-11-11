@@ -1,5 +1,5 @@
 //declare variables
-int count = 100;
+int count = 150;
 
 float[] gravity = new float[count];
 float[] x = new float[count];
@@ -24,6 +24,10 @@ void setup() {
     diam[i] = random(40, 80);
     velX[i] = random(-5, 5);
     velY[i] = random(-5, 5);
+    r[i] = random(255);
+    g[i] = random(255);
+    b[i] = random(255);
+    t[i] = 50;
     gravity[i] = 0.1;
   }
 }
@@ -35,6 +39,8 @@ void draw() {
   for (int i = 0; i < count; i++) {
 
     //draw ball
+    stroke(r[i], g[i], b[i]);
+    fill(r[i], g[i], b[i], t[i]);
     ellipse(x[i], y[i], diam[i], diam[i]);
 
     //add velocity to position
