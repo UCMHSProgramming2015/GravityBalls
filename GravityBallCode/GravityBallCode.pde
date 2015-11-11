@@ -57,7 +57,12 @@ void draw() {
     y[i] = height - velY[i];
     velY[i] = -abs(velY[i]);
   }  
+
+  
+  if (sq(mouseX - x[i]) + sq(mouseY - y[i]) < sq(diam[i]/2)) { //increase size if mouse is inside circle
+    diam[i] += 2;
+  }
+    
     
   }
-
 }
