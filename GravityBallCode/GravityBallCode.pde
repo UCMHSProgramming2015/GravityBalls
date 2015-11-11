@@ -1,5 +1,5 @@
 //declare variables
-float x, y, velX, velY, diam;
+float x, y, velX, velY, diam, gravity;
 
 void setup() {
   //set size of canvas
@@ -11,6 +11,7 @@ void setup() {
   diam = 80;
   velX = random(-5, 5);
   velY = random(-5, 5);
+  gravity = 0.2;
 }
 
 void draw() {
@@ -20,6 +21,9 @@ void draw() {
   //draw ball
   ellipse(x, y, diam, diam);
 
+  //add acceleration to velocity
+  velY += gravity;
+  
   //add velocity to position
   x += velX;
   y += velY;
