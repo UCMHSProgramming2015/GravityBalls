@@ -24,30 +24,65 @@ void setup() {
 
 void draw() {
   //draw background to cover previous frame
-  background(0);
-  fill(255);
-  textSize(50);
-  text("LEND ME YOUR ENERGY!!!", width/6, height/6);
-  text("~Son Goku", width/6, height/3.5);
-  for (int i = 0; i < count; i++) {
-    fill(157, 243, 255);
-    //draw ball
-    ellipse(x[i], y[i], diam[i], diam[i]);
-    //add velocity to position
-    x[i] += velX[i];
-    y[i] += velY[i];
-    velY[i] = velY[i] + earthg[i];
+  if (!mousePressed) {
+    background(0);
+    fill(255);
+    textSize(50);
+    text("LEND ME YOUR ENERGY!!!", width/6, height/6);
+    text("~Son Goku", width/6, height/3.5);
+    for (int i = 0; i < count; i++) {
+      fill(157, 243, 255);
+      //draw ball
+      ellipse(x[i], y[i], diam[i], diam[i]);
+      //add velocity to position
+      x[i] += velX[i];
+      y[i] += velY[i];
+      velY[i] = velY[i] + earthg[i];
 
-    //bounce ball if it hits walls
-    if (x[i] + diam[i]/2 >= width) {
-      velX[i] = -abs(velX[i]);    //if the ball hits the right wall, assign x velocity the negative version of itself
-    } else if (x[i] - diam[i]/2 <= 0) {
-      velX[i] = abs(velX[i]);     //if the ball hits the left wall, assign x velocity the positive version of itself
+      //bounce ball if it hits walls
+      if (x[i] + diam[i]/2 >= width) {
+        velX[i] = -abs(velX[i]);    //if the ball hits the right wall, assign x velocity the negative version of itself
+      } else if (x[i] - diam[i]/2 <= 0) {
+        velX[i] = abs(velX[i]);     //if the ball hits the left wall, assign x velocity the positive version of itself
+      }
+      if (y[i] + diam[i]/2 >= height) {
+        velY[i] = -abs(velY[i]);
+      } else if (y[i] - diam[i]/2 <= 0) {
+        velY[i] = abs(velY[i]);
+      }
     }
-    if (y[i] + diam[i]/2 >= height) {
-      velY[i] = -abs(velY[i]);
-    } else if (y[i] - diam[i]/2 <= 0) {
-      velY[i] = abs(velY[i]);
+    if (mousePressed) {
+      int i = 0;
+      i++; 
+      velX[i] = 0;
+      velY[i] = 0;
+    }
+  }
+  if (keyPressed) {
+    for (int i = 0; i < count; i++) {
+      fill(255);
+      textSize(50);
+      text("LEND ME YOUR ENERGY!!!", width/6, height/6);
+      text("~Son Goku", width/6, height/3.5);
+      fill(157, 243, 255);
+      //draw ball
+      ellipse(x[i], y[i], diam[i], diam[i]);
+      //add velocity to position
+      x[i] += velX[i];
+      y[i] += velY[i];
+      velY[i] = velY[i] + earthg[i];
+
+      //bounce ball if it hits walls
+      if (x[i] + diam[i]/2 >= width) {
+        velX[i] = -abs(velX[i]);    //if the ball hits the right wall, assign x velocity the negative version of itself
+      } else if (x[i] - diam[i]/2 <= 0) {
+        velX[i] = abs(velX[i]);     //if the ball hits the left wall, assign x velocity the positive version of itself
+      }
+      if (y[i] + diam[i]/2 >= height) {
+        velY[i] = -abs(velY[i]);
+      } else if (y[i] - diam[i]/2 <= 0) {
+        velY[i] = abs(velY[i]);
+      }
     }
   }
 }
