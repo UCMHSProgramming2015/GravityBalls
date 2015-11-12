@@ -1,4 +1,4 @@
-int count = 4;
+int count = 1004;
 
 
 
@@ -29,7 +29,6 @@ void setup() {
 }
 
 void draw() {
-  frameRate(300); 
   //draw backg[i]round to cover previous frame
   background(0);
 
@@ -61,6 +60,6 @@ void draw() {
       }
     } else if (y[i] - diam[i]/2 <= 0) {
       vely[i] = abs(vely[i]) + g[i];
-    }
+    }  
   }
 }
