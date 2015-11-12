@@ -1,5 +1,5 @@
 //declare variables
-int q = 50;
+int q = 20;
 float[] y = new float [q];
 float[] velX = new float [q];
 float[] velY = new float [q];
@@ -15,7 +15,7 @@ void setup() {
   for (int i = 0; i < q; i++) {
     x[i] = random(width);
     y[i] = random(height);
-    diam[i] = random(10, 20);
+    diam[i] = random(20, 50);
     velX[i] = random(-5, 6);
     velY[i] = random(-5, 6);
   }
@@ -27,7 +27,7 @@ void draw() {
 
   //draw ball
   for (int i = 0; i < q; i++) {
-    fill(random(255),random(255),random(255));
+    fill(random(255), random(255), random(255));
     x[i] += velX[i];
     velY[i] = velY[i] + gravity;
     y[i] += velY[i];
@@ -39,8 +39,6 @@ void draw() {
     }
     if (y[i] + diam[i]/2 > height) {
       velY[i] = -abs(velY[i]);
-    } else if (y[i] - diam[i] <= 0) {
-      velY[i] = abs(velY[i]);
     }
     if (y[i] >= height) {
       y[i] = height - diam[i]/2;
