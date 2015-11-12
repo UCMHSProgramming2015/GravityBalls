@@ -1,6 +1,6 @@
 //declare variables
 float g;
-int count = 9880;
+int count = 2880;
 float []x = new float [count];
 float []y= new float [count];
 float []velX = new float [count];
@@ -15,8 +15,8 @@ void setup() {
     x[i] = width/2;
     y[i] = height/2;
     diam[i] = random(8);
-    velX[i] = random(-5, 5);
-    velY[i]= random(10);
+    velX[i] = random(-1,1);
+    velY[i]= random(5);
     g =.1;
     ellipse(375, 305, 10, 10);
     ellipse(410, 305, 10, 10);
