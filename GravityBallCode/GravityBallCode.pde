@@ -1,5 +1,5 @@
 //declare variables
-int c = 250;
+int c = 1000;
 float x[] = new float[c];
 float y[] = new float[c];
 float velX[] = new float[c];
@@ -14,7 +14,7 @@ float g;
 void setup() {
   //set size of canvas
   size(800, 600);
-  diam = 10;
+  diam = 5;
   g = .0981;
 
   //initialize variables
@@ -56,7 +56,7 @@ void draw() {
   } else if (y[i] - diam/2 <= 0) {
     velY[i] += -0.88;
   }
-  if(b[i] >=20){
+  if(b[i] >=25){
     y[i] = height;
     velY[i] = 0;
     velX[i] -= .005;
