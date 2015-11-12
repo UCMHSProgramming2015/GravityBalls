@@ -53,5 +53,9 @@ void draw() {
     //else if (y[i] - diam[i]/2 <= 0) {
     //  velY[i] = abs(velY[i]); //if the ball hits the top wall, assign y velocity the negative version of itself
     //}
+    
+    if (y[i] >= height) {
+      y[i] = height/2;
+    }
   }
 }
