@@ -33,7 +33,7 @@ void setup() {
 
 void draw() {
   //draw background to cover previous frame
-  background(0);
+  background(frameCount%360,0,255);
 
   //draw ball
   for ( int i=0; i<count;i++){
@@ -56,12 +56,15 @@ void draw() {
   if (y[i] + diam[i]/2 >= height) {
     velY[i] = -abs(velY[i]);
     y[i] = height-diam[i]/2;
-  } else if (y[i] - diam[i]/2 <= 0) {
+  } /*else if (y[i] - diam[i]/2 <= 0) {
     velY[i] = abs(velY[i]);
-  }
+  }*/
   //add gravity to ball
   if(y[i]+diam[i]/2<height){
     velY[i] += gravity;
+  }
+  if(velY[i]==0){
+    velX[i]=0;
   }
   }
 }
