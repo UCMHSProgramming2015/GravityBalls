@@ -68,3 +68,8 @@ void draw() {
   }
   }
 }
+void keyPressed(){
+  if(keyCode==ESC){    //Exits program at ESC
+    exit();
+  }
+}
