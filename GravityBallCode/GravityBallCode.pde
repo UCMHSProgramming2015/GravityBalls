@@ -25,12 +25,11 @@ void draw() {
 
   //draw ball
   for (int i = 0; i<num; i++) {
-    ellipse(x[i], y[i], diam[i], diam[i]);
-
     //add velocity to position
     x[i] += velX[i];
     y[i] += velY[i];
-    velY[i]+=.2;
+
+    ellipse(x[i], y[i], diam[i], diam[i]);
     //bounce ball if it hits walls
     if (x[i] + diam[i]/2 >= width) {
       velX[i] = -abs(velX[i]);    //if the ball hits the right wall, assign x velocity the negative version of itself
@@ -41,6 +40,10 @@ void draw() {
       velY[i] = -abs(velY[i]);
     } else if (y[i] - diam[i]/2 <= 0) {
       velY[i] = abs(velY[i]);
+    }
+    else {
+      //only gravity when not below bottom or above top
+      velY[i]+=.1;
     }
   }
 }
