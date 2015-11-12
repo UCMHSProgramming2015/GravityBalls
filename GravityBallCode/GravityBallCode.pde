@@ -1,5 +1,5 @@
 //declare variables
-int count=450;
+int count=30;
 
 float [] x = new float [count];
 float [] y = new float [count];
@@ -14,7 +14,7 @@ void setup() {
   for (int i=0; i < count; i++) {
     x[i] = width/2;
     y[i] = height/2;
-    diam[i] = random(50);
+    diam[i] = 50;
     velx[i] = random(-5, 5);
     velY[i] = random(-5, 5);
   }
@@ -25,7 +25,6 @@ void draw() {
 
   //draw ball
   for (int i=0; i <count; i++) {
-    fill(random(255), random(255), random(255));
     ellipse(x[i], y[i], diam[i], diam[i]);
     //add velocity to position
     x[i] += velx[i];
