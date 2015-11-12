@@ -7,6 +7,8 @@ float[] y = new float[count];
 float[] velX = new float[count];
 float[] velY = new float[count];
 float[] diam = new float[count];
+/*float[] a = new float[count]; */
+
 float gravity =1;
 void setup() {
   //set size of canvas
@@ -17,8 +19,7 @@ void setup() {
     x[i] = random(width);
     y[i] = random(height);
     velX[i] = random(-5, 5);
-    //add gravity to ball
-    velY[i] = 5+gravity;
+    velY[i] = 5;
     diam[i] = random(20,50);
     i++;
   }
@@ -32,6 +33,8 @@ void draw() {
   for ( int i=0; i<count;i++){
     
   ellipse(x[i], y[i], diam[i], diam[i]);
+  //add gravity to ball
+  velY[i] += gravity;
 
   //add velocity to position
   x[i] += velX[i];
@@ -45,12 +48,14 @@ void draw() {
   }
   if (y[i] + diam[i]/2 >= height) {
     velY[i] = -abs(velY[i]);
+    y[i] = height-diam[i]/2;
   } else if (y[i] - diam[i]/2 <= 0) {
     velY[i] = abs(velY[i]);
   }
   //add gravity to ball
-  if(y[i]<height-diam[i]/2){
+  if(y[i]+diam[i]/2<height){
     velY[i] += gravity;
+    velX[i]= 0;
   }
   }
 }
