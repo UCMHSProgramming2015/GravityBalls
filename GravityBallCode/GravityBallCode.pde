@@ -29,6 +29,8 @@ void draw()
   background(0);
 for(int i = 0;i < woof; i++)
 {
+  noStroke();
+  fill(random(255),random(255),random(255));
   ellipse(x[i], y[i], diam[i], diam[i]);
 
   x[i] += velX[i];
@@ -46,7 +48,7 @@ for(int i = 0;i < woof; i++)
   } else if (y[i] - diam[i]/2 <= 0) {
     velY[i] = abs(velY[i]);
   }
-  if (y[i] > 0)
+  if (y[i] > -1)
   {
     velY[i] = velY[i] + gravity[i];
   }
