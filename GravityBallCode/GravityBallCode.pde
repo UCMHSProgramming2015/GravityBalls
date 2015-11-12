@@ -17,7 +17,7 @@ void setup() {
     y [i] = height/2;
     diam [i] = 50;
     velx [i] = random(3, 7);
-    vely [i] = random(3, 7);
+    vely [i] = random(3, 15);
     gravity [i] = .5; //sets speed of acceleration
   }
 }
