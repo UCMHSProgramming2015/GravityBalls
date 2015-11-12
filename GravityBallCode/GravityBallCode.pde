@@ -17,8 +17,8 @@ for (int i= 0; i < count; i++) {
    x[i] = random(width);
    y[i] = random(height);
    diam[i] = random(10,50);
-   velX[i] = random(10);
-   velY[i] = random(10);
+   velX[i] = random(5);
+   velY[i] = random(5);
      }
    }
      
