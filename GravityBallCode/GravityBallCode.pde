@@ -15,17 +15,17 @@ void setup() {
   for (int i = 0; i < c; i++) {  //create for loop to condense code
     x[i] = width/2;
     y[i] = height/2;
-    diam[i] = 80;
+    diam[i] = 25;
     velX[i] = random(-5, 5);
     velY[i] = random(-5, 5);
-    gravity[i] = 1.04;
+    gravity[i] = .54;
   }
 }
 
   void draw() {
     //draw background to cover previous frame
     background(0);
-
+fill(random(200), random(255), random(255), 80);
     //draw ball
     for (int i = 0; i < c; i++) {
     ellipse(x[i], y[i], diam[i], diam[i]);
@@ -41,7 +41,7 @@ void setup() {
       velX[i] = abs(velX[i]);     //if the ball hits the left wall, assign x velocity the positive version of itself
     }
     if (y[i] + diam[i]/2 >= height) {
-      velY[i] = -abs(velY[i]);
+      velY[i] *= -0.9;
       y[i] = y[i]- diam[i]/2;
     }
   //} else if (y - diam/2 <= 0) {
