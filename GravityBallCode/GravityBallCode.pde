@@ -48,7 +48,7 @@ for(int i = 0;i < woof; i++)
   } else if (y[i] - diam[i]/2 <= 0) {
     velY[i] = abs(velY[i]);
   }
-  if (y[i] > -1)
+  if (y[i]-diam[i]/2 > 0)
   {
     velY[i] = velY[i] + gravity[i];
   }
