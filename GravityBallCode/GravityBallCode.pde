@@ -6,6 +6,7 @@ float [] y = new float [count];
 float [] velx = new float [count];
 float [] velY = new float [count];
 float [] diam = new float [count];
+float [] grav = new float [count];
 void setup() {
   //set size of canvas
   size(800, 600);
@@ -14,9 +15,10 @@ void setup() {
   for (int i=0; i < count; i++) {
     x[i] = width/2;
     y[i] = height/2;
-    diam[i] = 50;
+    diam[i] = random(50);
     velx[i] = random(-5, 5);
     velY[i] = random(-5, 5);
+    grav[i] = .2;
   }
 }
 void draw() {
@@ -25,6 +27,8 @@ void draw() {
 
   //draw ball
   for (int i=0; i <count; i++) {
+    velY[i] += grav[i];
+    fill(random(250),random(250),random(250));
     ellipse(x[i], y[i], diam[i], diam[i]);
     //add velocity to position
     x[i] += velx[i];
