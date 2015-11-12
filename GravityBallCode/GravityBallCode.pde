@@ -7,7 +7,10 @@ float[] y = new float[count];
 float[] velX = new float[count];
 float[] velY = new float[count];
 float[] diam = new float[count];
-/*float[] a = new float[count]; */
+float[] colorsr = new float[count]; 
+float[] colorsg = new float[count];
+float[] colorsb = new float[count];
+
 
 float gravity =1;
 void setup() {
@@ -21,7 +24,10 @@ void setup() {
     velX[i] = random(-5, 5);
     velY[i] = 5;
     diam[i] = random(20,50);
-    i++;
+    //Adds color
+    colorsr[i]= random(0,255);
+    colorsg[i]= random(0,255);
+    colorsb[i]= random(0,255);
   }
 }
 
@@ -31,7 +37,8 @@ void draw() {
 
   //draw ball
   for ( int i=0; i<count;i++){
-    
+  //Adds color
+  fill(colorsr[i],colorsg[i],colorsb[i]);  
   ellipse(x[i], y[i], diam[i], diam[i]);
   //add gravity to ball
   velY[i] += gravity;
@@ -55,7 +62,6 @@ void draw() {
   //add gravity to ball
   if(y[i]+diam[i]/2<height){
     velY[i] += gravity;
-    velX[i]= 0;
   }
   }
 }
