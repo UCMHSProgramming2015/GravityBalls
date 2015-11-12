@@ -41,13 +41,17 @@ void draw() {
     //bounce ball if it hits walls
     if (x[i] + diam/2 >= width) {
       velX[i] = -abs(velX[i]);    //if the ball hits the right wall, assign x velocity the negative version of itself
+      x[i] = width - diam / 2;//reset to the boundary
     } else if (x[i] - diam/2 <= 0) {
       velX[i] = abs(velX[i]);     //if the ball hits the left wall, assign x velocity the positive version of itself
+      x[i] = diam / 2;//reset to the boundary
     }
     if (y[i] + diam/2 >= height) {
       velY[i] = -abs(velY[i]);
+      y[i] = height - diam / 2;
     } else if (y[i] - diam/2 <= 0) {
       velY[i] = abs(velY[i]);
+      y[i] = diam / 2;
     }
   }
 }
