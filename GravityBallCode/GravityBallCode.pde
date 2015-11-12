@@ -24,11 +24,11 @@ void setup() {
 
 void draw() {
   //draw background to cover previous frame
-  if (!mousePressed) {
+  if (!mousePressed) {   //if mouse is not Pressed
     background(0);
     fill(255);
     textSize(50);
-    text("LEND ME YOUR ENERGY!!!", width/6, height/6);
+    text("LEND ME YOUR ENERGY!!!", width/6, height/6);   //write this text
     text("~Son Goku", width/6, height/3.5);
     for (int i = 0; i < count; i++) {
       fill(157, 243, 255);
@@ -51,14 +51,14 @@ void draw() {
         velY[i] = abs(velY[i]);
       }
     }
-    if (mousePressed) {
+    if (mousePressed) { //if mouse is pressed, stop all the balls
       int i = 0;
       i++; 
       velX[i] = 0;
       velY[i] = 0;
     }
   }
-  if (keyPressed) {
+  if (keyPressed) {    //if any key is pressed, make the balls move again in the same way.  (This only happens if the mouse is Pressed at the same time)
     for (int i = 0; i < count; i++) {
       fill(255);
       textSize(50);
