@@ -1,14 +1,16 @@
 //declare variables
 float gravity, airResistance;
 int count = 30;
-int radius = 80;
+int size = 80;
 //declare array
 float[] x = new float[count];
 float[] y = new float[count];
 float[] velX = new float[count];
 float[] velY = new float[count];
 float[] diam = new float[count];
+float[] t = new float[count];
 PImage bg;
+int amp = 100;
 
 void setup() {
   //set size of canvas
@@ -18,7 +20,7 @@ void setup() {
  for(int i = 0; i < count; i++) {
   x[i] = width/2;
   y[i] = height/2;
-  diam[i] = radius*2;
+  diam[i] = size;
   velX[i] = random(-5, 5);
   velY[i] = random(-5, 5);
   colorMode(HSB,800,600,100);
@@ -58,16 +60,18 @@ void draw() {
       y[i] = height - velY[i];
       velY[i] = -abs(velY[i]);
     }  
-  
+    diam[i] = -amp*cos(t[i])+size+amp/2;
     
     if (sq(mouseX - x[i]) + sq(mouseY - y[i]) < sq(diam[i]/2)) { //increase size if mouse is inside circle
-      diam[i] += diam[i]/50;
+      if (t[i] < 2*PI) {
+        t[i] += .1;
+      }
+      else {
+        t[i]=0;
+      }
     }
-    else if (diam[i] > radius){ //automatically decrease if mouse is not in contact and circle is larger than original size
-      diam[i] -= diam[i]/50;
-    }
-    if (diam[i] > width || diam[i] > height) { //reset if it gets too big
-      diam[i] = radius*2;
-    }
+    else if (t[i] > 0){ //automatically decrease if mouse is not in contact and circle is larger than original size
+      t[i] -= .05;
+         }
   }
 }
