@@ -1,38 +1,50 @@
 //declare variables
-float x, y, velX, velY, diam;
+int count = 30;
+float [] x= new float [count];
+float [] y= new float [count];
+float [] velY= new float [count];
+float [] diam= new float [count];
+float [] a= new float [count];
 
 void setup() {
   //set size of canvas
-  size(800, 600);
+  size(800, 600);   //set size
 
   //initialize variables
-  x = width/2;
-  y = height/2;
-  diam = 80;
-  velX = random(-5, 5);
-  velY = random(-5, 5);
+int i=0; //set local variable
+
+  while(i<count){
+    y[i]=height/2;
+    x[i]= random(0,width);
+    diam[i]= random(20,40);  //while i is less than 30, all these variables are true
+    velY[i]= random(5,10);
+    a[i]= random(0.5, 5);
+    
+    i++;  //i increases by 1
+  }
+
+ 
 }
 
 void draw() {
-  //draw background to cover previous frame
-  background(0);
+ background(0);  //set background
+ int i=0;  //set local variable
+ 
+ //while i is less than 30, all this is true
+ while(i<count){
+  ellipse(x[i], y[i], diam[i], diam[i]);
+  
+ if(dist(x[i], y[i], mouseX, mouseY) < diam[i]/2){   //if distance between mouse and center is less than the radius of the circle...
+  diam[i]= diam[i]+5;                                //... increase the circle size
+ }
 
-  //draw ball
-  ellipse(x, y, diam, diam);
+velY[i] = velY[i] + a[i];  //"gravity" acts on balls- decrease distance it bounces each time
+y[i] += velY[i];         
 
-  //add velocity to position
-  x += velX;
-  y += velY;
-
-  //bounce ball if it hits walls
-  if (x + diam/2 >= width) {
-    velX = -abs(velX);    //if the ball hits the right wall, assign x velocity the negative version of itself
-  } else if (x - diam/2 <= 0) {
-    velX = abs(velX);     //if the ball hits the left wall, assign x velocity the positive version of itself
-  }
-  if (y + diam/2 >= height) {
-    velY = -abs(velY);
-  } else if (y - diam/2 <= 0) {
-    velY = abs(velY);
-  }
+if(y[i]>=height){
+ velY[i]=-abs(velY[i]); 
+y[i]=height;                  //change y direction when it hits the bottom
+}
+i++;
+}
 }
