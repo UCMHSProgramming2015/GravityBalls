@@ -51,9 +51,9 @@ void draw() {
   }
   
 
-  if(dist(mouseX, mouseY, x[i], y[i]) <= diam[i]/2){
+  if(dist(mouseX, mouseY, x[i], y[i]) <= diam[i]/2){  //compares (x1, y1) with (x2, y2) if it is within the radius of a circle
     print("      splat tim");
-    fill(255, 165, 0);  //orange
+    fill(255, 165, 0);  //orange fill
     text("SPLAT TIM", width/2-100, height/2);
   } else if(dist(mouseX, mouseY, x[i], y[i]) >= diam[i]/2);
     fill(255);
