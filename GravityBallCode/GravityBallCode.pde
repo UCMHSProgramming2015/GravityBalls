@@ -62,7 +62,7 @@ void draw() {
     }  
     diam[i] = -amp*cos(t[i])+size+amp/2;
     
-    if (sq(mouseX - x[i]) + sq(mouseY - y[i]) < sq(diam[i]/2)) { //increase size if mouse is inside circle
+    if (dist(x[i],y[i], mouseX, mouseY) < diam[i]/2) { //increase size if mouse is inside circle
       if (t[i] < 2*PI) {
         t[i] += .1;
       }
